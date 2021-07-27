@@ -17,7 +17,7 @@ const pagelist = (argument = "") => {
                     let allOpts = [];
                     response.results.forEach(article => {
                         articles += `
-                            <div class="col-4" name="${article.name}">
+                            <div class="col-4 ${article.name.replace(/\s+/g, "-")}">
                                 <div class="cardGame card my-4" style="width: 20rem;">
                                     <div class="card-body">
                                         <h1>${article.name}</h1>
@@ -27,7 +27,7 @@ const pagelist = (argument = "") => {
                                 </div>
                             </div>`;
                         let opt = document.createElement('option');
-                        opt.id = article.name;
+                        opt.id = article.name.replace(/\s+/g, "-");
                         opt.innerHTML = `${article.name}`
                         allOpts.push(opt);
                     });
@@ -46,10 +46,10 @@ const pagelist = (argument = "") => {
         let select = document.getElementsByTagName("option");
         console.log(select);
         for (let i = 0; i < select.length; i++) {
-            if (select[i].selected == false) {
-                let matchingArticle = document.querySelector(`.col-4`).name === `${select[i].id}`;
+            if (select[i].selected == true) {
+                let matchingArticle = document.getElementsByClassName(`${select[i].id}`)[0];
+                matchingArticle.classList.add('show');
                 console.log(matchingArticle);
-                matchingArticle.classList.toggle('show');
             }
         }
     }
