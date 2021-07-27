@@ -2,11 +2,11 @@ const PageDetail = (argument = "") => {
     console.log("Page Detail", argument);
 
     const preparePage = () => {
-        cleanedArgument = argument.replace(/\s+/g, "-");
+        let cleanedArgument = argument.replace(/\s+/g, "-");
 
         const fetchGame = (url, argument) => {
             //let finalURL = `${url}${argument}`;
-            let finalURL = `${url}${argument}?key=${apiKey}`;
+            let finalURL = `${url}${argument}?key=${process.env.API_KEY}`;
             console.log('>>>', finalURL);
             //finalURL = `${url}&search=${argument}&page_size=10&search_exact=true`;
 

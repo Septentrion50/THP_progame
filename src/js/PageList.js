@@ -2,7 +2,7 @@ const PageList = (argument = "") => {
     console.log("Page List", argument);
 
     const preparePage = () => {
-        cleanedArgument = argument.replace(/\s+/g, "-");
+        let cleanedArgument = argument.replace(/\s+/g, "-");
         let articles = "";
 
         const fetchList = (url, argument) => {
@@ -25,7 +25,7 @@ const PageList = (argument = "") => {
                 });
         };
 
-        fetchList(`https://api.rawg.io/api/games?key=${apiKey}`, cleanedArgument);
+        fetchList(`https://api.rawg.io/api/games?key=${process.env.API_KEY}`, cleanedArgument);
     };
 
     const render = () => {

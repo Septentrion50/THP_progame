@@ -1,7 +1,6 @@
 import '../sass/style.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import bootstrap from 'bootstrap';
-import Home from './Home';
 import PageDetail from './PageDetail';
 import PageList from './PageList';
 import routes from './routes';
@@ -13,7 +12,7 @@ const setRoute = () => {
     pageArgument = path[1] || "";
 
     var pageContent = document.getElementById("pageContent");
-    routes[path[0]](pageArgument);
+    routes(path[0], pageArgument);
     return true;
 };
 
