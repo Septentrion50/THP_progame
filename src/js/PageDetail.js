@@ -1,14 +1,15 @@
-const PageDetail = (argument = "") => {
+const pagedetail = (argument = "") => {
     console.log("Page Detail", argument);
 
     const preparePage = () => {
         let cleanedArgument = argument.replace(/\s+/g, "-");
 
         const fetchGame = (url, argument) => {
-            //let finalURL = `${url}${argument}`;
-            let finalURL = `${url}${argument}?key=${process.env.API_KEY}`;
+            let finalURL = `${url}?key=${process.env.API_KEY}`;
+            if (argument){
+                finalURL = `${url}${argument}?key=${process.env.API_KEY}`;
+            }
             console.log('>>>', finalURL);
-            //finalURL = `${url}&search=${argument}&page_size=10&search_exact=true`;
 
             fetch(`${finalURL}`)
                 .then((response) => response.json())
@@ -23,9 +24,7 @@ const PageDetail = (argument = "") => {
                 });
         };
 
-        //fetchGame(`https://api.rawg.io/api/games?key=${apiKey}`, cleanedArgument);
         fetchGame("https://api.rawg.io/api/games/", cleanedArgument);
-        //https://api.rawg.io/api/games/{id}
     };
 
     const render = () => {
@@ -45,4 +44,4 @@ const PageDetail = (argument = "") => {
     render();
 };
 
-export default PageDetail;
+export default pagedetail;

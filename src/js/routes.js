@@ -1,13 +1,13 @@
-import PageDetail from "./PageDetail";
-import PageList from "./PageList";
+import pagedetail from "./PageDetail";
+import pagelist from "./PageList";
 
 const routes = (path, argument) => {
     let routes = {
-        "pagelist": PageList(argument),
-        "pagedetail": PageDetail(argument),
+        "pagelist": pagelist,
+        "pagedetail": pagedetail,
     }
     if (path){
-        return routes[path];
+        routes[path](argument);
     }
 };
 

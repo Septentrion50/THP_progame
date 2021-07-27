@@ -4,15 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THP - progame</title>
+    <title>THP-progame</title>
     <link rel="stylesheet" href="./dist/bundle.css" />
 </head>
 <body>
-    <a href="#">Home</a>
-    <a href="#pagelist">PageList</a>
-    <a href="#pagelist/borderlands">PageList borderlands</a>
+    <div class="container">
+        <header class="d-flex">
+            <nav>
+                <a href="#">Home</a>
+                <a href="#pagelist">PageList</a>
+                <a href="#pagelist/borderlands">PageList borderlands</a>
+            </nav>
+        <select name="filter" id="gameFilter" multiple="true">
+            <option id="first-opt">Please select something</option>
+        </select>
+    </div>
+    </header>
 
-    <section id="pageContent">Choisissez un lien</section>
+    <section id="pageContent" class="container">Choisissez un lien</section>
 
     <script src="./dist/bundle.js"></script> 
 </body>
