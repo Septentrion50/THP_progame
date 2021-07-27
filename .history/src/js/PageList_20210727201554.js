@@ -90,20 +90,16 @@ const pagelist = (argument = "") => {
 
     const btnElt = document.querySelector('#btn-show-more');
 
-    btnElt.addEventListener('click', e => {
+    btnElt.addEventListener('click', async e => {
         e.preventDefault();
-        const lists = showMore();
-        if (pageNumber >= 2) {
-            e.target.classList.add('d-none');
-            return;
-        }
+        if (pageNumber >= 2) return;
+        let lists = showMore();
         console.log('...',lists);
         pageNumber += 1;
         revealCards(lists[pageNumber]);
     });
-
-    //btnElt.click();
-    //revealCards(lists[0]);
+console.log('...', btnElt);
+    btnElt.click();
 };
 
 export default pagelist;

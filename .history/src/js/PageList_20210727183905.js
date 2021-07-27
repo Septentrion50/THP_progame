@@ -1,6 +1,5 @@
 const pagelist = (argument = "") => {
     console.log("Page List", argument);
-    let pageNumber = 0;
 
     const preparePage = () => {
         let cleanedArgument = argument.replace(/\s+/g, "-");
@@ -10,17 +9,17 @@ const pagelist = (argument = "") => {
         const fetchList = (url, argument) => {
             let finalURL = url;
             if (argument) {
-                finalURL = `${url}&search=${argument}&page_size=27`;
-            } else {
-                finalURL = `${url}&dates=2021-08-01,2022-08-01&page_size=27`;
+                finalURL = `${url}&search=${argument}&page_size=10&search_exact=true`;
+                //dates=2021-08-01,2022-08-01&page_size=27&key=4f59faabbaf94bafb3779f390c47eea3
             }
+            else {}
             fetch(`${finalURL}`)
                 .then(response => response.json())
                 .then(response => {
                     let allOpts = [];
                     response.results.forEach(article => {
                         articles += `
-                            <div class="col-4 ${article.name.replace(/\s+/g, "-")} d-none">
+                            <div class="col-4 ${article.name.replace(/\s+/g, "-")}">
                                 <div class="cardGame card my-4" style="width: 20rem;">
                                     <div class="card-body">
                                         <h1>${article.name}</h1>
@@ -55,31 +54,15 @@ const pagelist = (argument = "") => {
                 matchingArticle.classList.remove('d-none');
             }
         }
-    };
+    }
 
-    const showMore = () => {
-        if (!document.querySelectorAll('.col-4')[0]) return;
-        const cardList = document.querySelectorAll('.col-4');
-        const listPart1 = Array.from(cardList).slice(0, 9);
-        const listPart2 = Array.from(cardList).slice(9, 18);
-        const listPart3 = Array.from(cardList).slice(18, 27);
-        return [listPart1, listPart2, listPart3];
-    };
-
-    const revealCards = (arr) => {
-        arr.map(x => x.classList.remove('d-none'));
-    };
-
-    window.addEventListener('change', showSelected);
+    window.addEventListener('change', showSelected)
 
     const render = () => {
         let pageContent = document.querySelector("#pageContent");
         pageContent.innerHTML = `
             <section class="page-list">
                 <div class="articles row">...loading</div>
-                <div class="mt-5">
-                    <button id="btn-show-more" class="btn btn-primary">Show more...</button>
-                </div>
             </section>
         `;
         preparePage();
@@ -88,22 +71,6 @@ const pagelist = (argument = "") => {
     render();
 
 
-    const btnElt = document.querySelector('#btn-show-more');
-
-    btnElt.addEventListener('click', e => {
-        e.preventDefault();
-        const lists = showMore();
-        if (pageNumber >= 2) {
-            e.target.classList.add('d-none');
-            return;
-        }
-        console.log('...',lists);
-        pageNumber += 1;
-        revealCards(lists[pageNumber]);
-    });
-
-    //btnElt.click();
-    //revealCards(lists[0]);
 };
 
 export default pagelist;

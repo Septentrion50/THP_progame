@@ -70,6 +70,10 @@ const pagelist = (argument = "") => {
         arr.map(x => x.classList.remove('d-none'));
     };
 
+    const hideCards = (arr) => {
+        arr.map(x => x.classList.add('d-none'));
+    };
+
     window.addEventListener('change', showSelected);
 
     const render = () => {
@@ -92,18 +96,16 @@ const pagelist = (argument = "") => {
 
     btnElt.addEventListener('click', e => {
         e.preventDefault();
-        const lists = showMore();
-        if (pageNumber >= 2) {
-            e.target.classList.add('d-none');
-            return;
-        }
+        if (pageNumber >= 2) return;
+        let lists = showMore();
         console.log('...',lists);
         pageNumber += 1;
         revealCards(lists[pageNumber]);
     });
 
-    //btnElt.click();
-    //revealCards(lists[0]);
+    btnElt.click();
+
+
 };
 
 export default pagelist;

@@ -87,12 +87,15 @@ const pagelist = (argument = "") => {
 
     render();
 
+    let lists = showMore();
+    console.log('...',typeof lists);
+    revealCards(lists[0]);
+
 
     const btnElt = document.querySelector('#btn-show-more');
 
     btnElt.addEventListener('click', e => {
         e.preventDefault();
-        const lists = showMore();
         if (pageNumber >= 2) {
             e.target.classList.add('d-none');
             return;
@@ -103,7 +106,6 @@ const pagelist = (argument = "") => {
     });
 
     //btnElt.click();
-    //revealCards(lists[0]);
 };
 
 export default pagelist;

@@ -1,6 +1,5 @@
 const pagelist = (argument = "") => {
     console.log("Page List", argument);
-    let pageNumber = 0;
 
     const preparePage = () => {
         let cleanedArgument = argument.replace(/\s+/g, "-");
@@ -20,7 +19,7 @@ const pagelist = (argument = "") => {
                     let allOpts = [];
                     response.results.forEach(article => {
                         articles += `
-                            <div class="col-4 ${article.name.replace(/\s+/g, "-")} d-none">
+                            <div class="col-4 ${article.name.replace(/\s+/g, "-")}">
                                 <div class="cardGame card my-4" style="width: 20rem;">
                                     <div class="card-body">
                                         <h1>${article.name}</h1>
@@ -60,9 +59,9 @@ const pagelist = (argument = "") => {
     const showMore = () => {
         if (!document.querySelectorAll('.col-4')[0]) return;
         const cardList = document.querySelectorAll('.col-4');
-        const listPart1 = Array.from(cardList).slice(0, 9);
-        const listPart2 = Array.from(cardList).slice(9, 18);
-        const listPart3 = Array.from(cardList).slice(18, 27);
+        const listPart1 = cardList.slice(0, 9);
+        const listPart2 = cardList.slice(9, 19);
+        const listPart3 = cardList.slice(19, 27);
         return [listPart1, listPart2, listPart3];
     };
 
@@ -70,7 +69,16 @@ const pagelist = (argument = "") => {
         arr.map(x => x.classList.remove('d-none'));
     };
 
+    const btnElt = document.querySelector('#btn-show-more');
+    let pageNumber = 0;
+
     window.addEventListener('change', showSelected);
+    btnElt.addEventListener('click', e => {
+        e.preventDefault();
+        let lists = showMore();
+        pageNumber++
+        revealCards(lists[pa]);
+    });
 
     const render = () => {
         let pageContent = document.querySelector("#pageContent");
@@ -88,22 +96,6 @@ const pagelist = (argument = "") => {
     render();
 
 
-    const btnElt = document.querySelector('#btn-show-more');
-
-    btnElt.addEventListener('click', e => {
-        e.preventDefault();
-        const lists = showMore();
-        if (pageNumber >= 2) {
-            e.target.classList.add('d-none');
-            return;
-        }
-        console.log('...',lists);
-        pageNumber += 1;
-        revealCards(lists[pageNumber]);
-    });
-
-    //btnElt.click();
-    //revealCards(lists[0]);
 };
 
 export default pagelist;

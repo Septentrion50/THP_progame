@@ -66,8 +66,18 @@ const pagelist = (argument = "") => {
         return [listPart1, listPart2, listPart3];
     };
 
+    const loadNine = () => {
+        let lists = showMore();
+        hideCards(lists[1]);
+        hideCards(lists[2]);
+    };
+
     const revealCards = (arr) => {
         arr.map(x => x.classList.remove('d-none'));
+    };
+
+    const hideCards = (arr) => {
+        arr.map(x => x.classList.add('d-none'));
     };
 
     window.addEventListener('change', showSelected);
@@ -87,23 +97,19 @@ const pagelist = (argument = "") => {
 
     render();
 
-
+btnElt.click()
     const btnElt = document.querySelector('#btn-show-more');
 
     btnElt.addEventListener('click', e => {
         e.preventDefault();
-        const lists = showMore();
-        if (pageNumber >= 2) {
-            e.target.classList.add('d-none');
-            return;
-        }
+        if (pageNumber >= 2) return;
+        let lists = showMore();
         console.log('...',lists);
         pageNumber += 1;
         revealCards(lists[pageNumber]);
     });
 
-    //btnElt.click();
-    //revealCards(lists[0]);
+
 };
 
 export default pagelist;
