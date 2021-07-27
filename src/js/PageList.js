@@ -44,12 +44,12 @@ const pagelist = (argument = "") => {
 
     const showSelected = () => {
         let select = document.getElementsByTagName("option");
-        console.log(select);
         for (let i = 0; i < select.length; i++) {
-            if (select[i].selected == true) {
-                let matchingArticle = document.getElementsByClassName(`${select[i].id}`)[0];
-                matchingArticle.classList.add('show');
-                console.log(matchingArticle);
+            let matchingArticle = document.getElementsByClassName(`${select[i].id}`)[0];
+            if (select[i].selected === false) {
+                matchingArticle.classList.add('d-none');
+            } else if (select[i].selected === true){
+                matchingArticle.classList.remove('d-none');
             }
         }
     }
