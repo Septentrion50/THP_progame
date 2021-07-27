@@ -6,7 +6,9 @@ const routes = (path, argument) => {
         "pagelist": PageList(argument),
         "pagedetail": PageDetail(argument),
     }
-    return routes[path];
+    if (path){
+        return routes[path];
+    }
 };
 
 export default routes;

@@ -29,6 +29,7 @@ const PageDetail = (argument = "") => {
     };
 
     const render = () => {
+        let pageContent = document.getElementById("pageContent");
         pageContent.innerHTML = `
             <section class="page-detail">
                 <div class="article">

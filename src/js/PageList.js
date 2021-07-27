@@ -29,6 +29,7 @@ const PageList = (argument = "") => {
     };
 
     const render = () => {
+        let pageContent = document.querySelector("#pageContent");
         pageContent.innerHTML = `
             <section class="page-list">
                 <div class="articles">...loading</div>
