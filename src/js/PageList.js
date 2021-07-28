@@ -1,6 +1,4 @@
 const pagelist = (argument = "") => {
-    console.log("Page List", argument);
-    let pageNumber = 0;
 
     const preparePage = () => {
         let cleanedArgument = argument.replace(/\s+/g, "-");
@@ -39,6 +37,10 @@ const pagelist = (argument = "") => {
                         select.append(allOpts[i]);
                     }
                     document.querySelector(".page-list .articles").innerHTML = articles;
+                    let nineFirst = document.querySelectorAll('.col-4');
+                    for (let i = 0; i < 9; i++){
+                        nineFirst[i].classList.remove('d-none');
+                    }
                 });
         };
 
@@ -58,12 +60,16 @@ const pagelist = (argument = "") => {
     };
 
     const showMore = () => {
-        if (!document.querySelectorAll('.col-4')[0]) return;
-        const cardList = document.querySelectorAll('.col-4');
-        const listPart1 = Array.from(cardList).slice(0, 9);
-        const listPart2 = Array.from(cardList).slice(9, 18);
-        const listPart3 = Array.from(cardList).slice(18, 27);
-        return [listPart1, listPart2, listPart3];
+        if (!document.querySelectorAll('.col-4')[0]){
+            console.log("Oups");
+            return;
+        } else {
+            const cardList = document.querySelectorAll('.col-4');
+            const listPart1 = Array.from(cardList).slice(0, 9);
+            const listPart2 = Array.from(cardList).slice(9, 18);
+            const listPart3 = Array.from(cardList).slice(18, 27);
+            return [listPart1, listPart2, listPart3];
+        }
     };
 
     const revealCards = (arr) => {
@@ -87,23 +93,19 @@ const pagelist = (argument = "") => {
 
     render();
 
+    let pageNumber = 1;
 
-    const btnElt = document.querySelector('#btn-show-more');
+    let btnElt = document.querySelector('#btn-show-more');
 
-    btnElt.addEventListener('click', e => {
+    btnElt.addEventListener('mousedown', e => {
         e.preventDefault();
-        const lists = showMore();
-        if (pageNumber >= 2) {
+        revealCards(showMore()[pageNumber]);
+        pageNumber += 1;
+        if (pageNumber >= 3) {
             e.target.classList.add('d-none');
             return;
         }
-        console.log('...',lists);
-        pageNumber += 1;
-        revealCards(lists[pageNumber]);
     });
-
-    //btnElt.click();
-    //revealCards(lists[0]);
 };
 
 export default pagelist;

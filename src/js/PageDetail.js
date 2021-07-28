@@ -1,5 +1,4 @@
 const pagedetail = (argument = "") => {
-    console.log("Page Detail", argument);
 
     const preparePage = () => {
         let cleanedArgument = argument.replace(/\s+/g, "-");
