@@ -22,18 +22,18 @@ const home = (argument = "") => {
                     response.results.forEach(article => {
                         let platforms = article.platforms.map(x => `<li>${new Components().svgComponent(x.platform['slug'])}</li>`);
                         articles += `
-                            <a href="#pagedetail/${article.id}" class="col-4 ${article.name.replace(/\s+/g, "-")} d-none">
-                                <div class="cardGame card my-4">
+                            <div class="col-4 ${article.name.replace(/\s+/g, "-")} d-none">
+                                <a href="#pagedetail/${article.id}" class="cardGame card my-4">
                                     <div class="card-img-top">
                                         <img src="${article.background_image}" class="card-img-single" alt="">
                                     </div>
                                     <div class="card-body">
                                         <h1>${article.name}</h1>
                                         <h2 class="d-none">${article.released}</h2>
-                                        <ul class="platform-list">${platforms}</ul>
+                                        <ul class="platform-list">${platforms.join(' ')}</ul>
                                     </div>
-                                </div>
-                            </a>`;
+                                </a>
+                            </div>`;
                         let opt = document.createElement('option');
                         opt.id = article.name.replace(/\s+/g, "-");
                         opt.innerHTML = `${article.name}`
@@ -89,9 +89,9 @@ const home = (argument = "") => {
     const render = () => {
         let pageContent = document.querySelector("#pageContent");
         pageContent.innerHTML = `
-            <div class="welcome">
+            <div class="welcome mb-4">
                 <h1 class="h1">Welcome</h1>
-                <p class="welcome-content></p>
+                <p class="welcome-content">The Hyper Progame is the world’s premier event for computer and video games and related products. At The Hyper Progame, the video game industry’s top talent pack the Los Angeles Convention Center, connecting tens of thousands of the best, brightest, and most innovative in the interactive entertainment industry. For three exciting days, leading-edge companies, groundbreaking new technologies, and never-before-seen products will be showcased. The Hyper Progame connects you with both new and existing partners, industry executives, gamers, and social influencers providing unprecedented exposure to the entire video game industry, all under one roof. This text seems familiar.</p>
             </div>
             <section class="page-list">
                 <div>
@@ -99,9 +99,9 @@ const home = (argument = "") => {
                         <option id="first-opt">Please select something</option>
                     </select>
                 </div>
-                <div id="articles" class="articles row">...loading</div>
-                <div class="mt-5">
-                    <button id="btn-show-more" class="btn btn-primary">Show more...</button>
+                <div id="articles" class="articles row my-2">...loading</div>
+                <div class="d-flex justify-content-center mt-5">
+                    <button id="btn-show-more" class="btn-default">Show more...</button>
                 </div>
             </section>
         `;

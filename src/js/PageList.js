@@ -96,8 +96,8 @@ const pagelist = (argument = "") => {
                     </select>
                 </div>
                 <div class="articles row">...loading</div>
-                <div class="mt-5">
-                    <button id="btn-show-more" class="btn btn-primary">Show more...</button>
+                <div class="d-flex justify-content-center mt-5">
+                    <button id="btn-show-more" class="btn-default">Show more...</button>
                 </div>
             </section>
         `;

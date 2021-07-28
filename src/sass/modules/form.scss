@@ -1,27 +1,3 @@
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    padding: 1rem 0;
-    background-color: $dark;
-
-    .container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    h1 {
-        color: $red;
-        font-size: 2.4rem;
-        font-weight: bold;
-    }
-    .input-group {
-        width: auto;
-    }
-}
-
 input[type="text"],.magnifier {
     &,&:focus {
         height: 2rem;
@@ -34,20 +10,26 @@ input[type="text"],.magnifier {
     }
 }
 #basic-url {
-    width: 12rem !important;
     padding-left: .5rem;
-    border-left: 0;
-    border-radius: 0 1rem 1rem 0;
+    @include search-design(12rem, left, 0, 1rem);
 }
 .magnifier {
-    width: 2rem !important;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    border-right: 0;
-    border-radius: 1rem 0 0 1rem;
+    @include search-design(2rem, right, 0, 1rem);
 }
 .input-group-text svg magnifier {
     height: 1.2rem;
     fill: $light;
+}
+
+select {
+    width: 15rem;
+    @include btn-design;
+}
+
+.btn-default {
+    @include btn-design;
+    font-weight: bold;
 }
