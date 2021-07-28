@@ -22,11 +22,11 @@ const pagelist = (argument = "") => {
                     response.results.forEach(article => {
                         let platforms = article.platforms.map(x => `<li>${new Components().svgComponent(x.platform['slug'])}</li>`);
                         articles += `
-                            <a href = "#pagedetail/${article.id}" class="col-4 ${article.name.replace(/\s+/g, "-")} d-none">
+                            <a href="#pagedetail/${article.id}" class="col-4 ${article.name.replace(/\s+/g, "-")} d-none">
                                 <div class="cardGame card my-4">
                                     <div class="card-img-top">
                                         <img src="${article.background_image}" class="card-img-single" alt="">
-                                    </div
+                                    </div>
                                     <div class="card-body">
                                         <h1>${article.name}</h1>
                                         <h2 class="d-none">${article.released}</h2>
