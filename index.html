@@ -10,18 +10,19 @@
 <body>
     <div class="container">
         <header class="d-flex">
-            <nav>
-                <a href="#">Home</a>
-                <a href="#pagelist">PageList</a>
-                <a href="#pagelist/borderlands">PageList borderlands</a>
-            </nav>
-        <select name="filter" id="gameFilter" multiple="true">
-            <option id="first-opt">Please select something</option>
-        </select>
+            <h1>The Hyper Progame</h1>
+            <select name="filter" id="gameFilter" multiple="true">
+                <option id="first-opt">Please select something</option>
+            </select>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+            <span class="input-group-text" id="basic-addon3">
+            </span>
+        </div>
     </div>
     </header>
 
-    <section id="pageContent" class="container">Choisissez un lien</section>
+    <section id="pageContent" class="container"></section>
 
     <script src="./dist/bundle.js"></script> 
 </body>

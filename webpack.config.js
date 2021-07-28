@@ -65,6 +65,14 @@ module.exports = {
                 test: /\.(png|jpe?g|gif)$/i,
                 type: 'asset/resource',
             },
+            // SVG managment
+            {
+                test: /\.svg$/i,
+                type: 'asset/source',
+                generator: {
+                    filename: "svg/[hash][ext]"
+                },
+            },
             // Gestion des fonts 
             {
                 test: /\.(woff|woff2|ttf|otf|eot)$/i,

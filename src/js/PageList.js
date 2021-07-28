@@ -37,13 +37,13 @@ const pagelist = (argument = "") => {
                         select.append(allOpts[i]);
                     }
                     document.querySelector(".page-list .articles").innerHTML = articles;
+
                     let nineFirst = document.querySelectorAll('.col-4');
                     for (let i = 0; i < 9; i++){
                         nineFirst[i].classList.remove('d-none');
                     }
                 });
         };
-
         fetchList(`https://api.rawg.io/api/games?key=${process.env.API_KEY}`, cleanedArgument);
     };
 
@@ -75,6 +75,7 @@ const pagelist = (argument = "") => {
     const revealCards = (arr) => {
         arr.map(x => x.classList.remove('d-none'));
     };
+
 
     window.addEventListener('change', showSelected);
 
