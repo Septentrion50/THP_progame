@@ -19,7 +19,8 @@ const pagelist = (argument = "") => {
                     response.results.forEach(article => {
                         articles += `
                             <div class="col-4 ${article.name.replace(/\s+/g, "-")} d-none">
-                                <div class="cardGame card my-4" style="width: 20rem;">
+                                <div class="cardGame card my-4">
+                                    <img src="${article.background_image}" class="card-img-top" alt="">
                                     <div class="card-body">
                                         <h1>${article.name}</h1>
                                         <h2>${article.released}</h2>

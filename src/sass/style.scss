@@ -1,7 +1,4 @@
-.input-group-text {
-    background-color: black;
-}
-
-.input-group-text svg path {
-    fill: red;
-}
+@import './modules/variables';
+@import './modules/commons';
+@import './modules/form';
+@import './modules/card';

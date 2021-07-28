@@ -1,0 +1,15 @@
+.articles {
+    &,[class^="col-"] {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: stretch;
+        align-content: stretch;
+    }
+    .card {
+        width: 100%;
+        border: 0;
+        border-radius: 0;
+        background-color: transparent;
+    }
+}

@@ -6,7 +6,7 @@ import routes from './routes';
 import Components from './components';
 import pagelist from './PageList';
 
-let searchBar = document.querySelector('.input-group-text');
+let searchBar = document.querySelector('.magnifier');
 searchBar.innerHTML = new Components().svgComponent('search');
 
 let searchInput = document.querySelector("#basic-url");

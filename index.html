@@ -4,26 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THP-progame</title>
+    <title>The Hyper Progame</title>
     <link rel="stylesheet" href="./dist/bundle.css" />
 </head>
 <body>
-    <div class="container">
-        <header class="d-flex">
-            <h1>The Hyper Progame</h1>
-            <select name="filter" id="gameFilter" multiple="true">
-                <option id="first-opt">Please select something</option>
-            </select>
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-            <span class="input-group-text" id="basic-addon3">
-            </span>
+        <!-- HEADER -->
+        <header>
+            <div class="container">
+                <!-- TITLE -->
+                <h1 class="me-3">The Hyper Progame</h1>
+                <!-- SELECT -->
+                <select name="filter" id="gameFilter" multiple="true">
+                    <option id="first-opt">Please select something</option>
+                </select>
+                <!-- SEARCH -->
+                <div class="input-group">
+                    <span class="magnifier" id="basic-addon3"></span>
+                    <input type="text" 
+                            id="basic-url" 
+                            placeholder="Find a game…" 
+                            aria-describedby="basic-addon3">
+                </div>
+            </div>
+        </header>
+
+        <!-- CONTENT -->
+        <div class="container my-5 pt-5">
+            <section id="pageContent" class="mt-5 pt-5"></section>
         </div>
-    </div>
-    </header>
 
-    <section id="pageContent" class="container"></section>
 
-    <script src="./dist/bundle.js"></script> 
+    <!-- SCRIPTS -->
+    <script src="./dist/bundle.js"></script>
 </body>
 </html>
