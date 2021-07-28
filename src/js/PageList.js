@@ -18,16 +18,17 @@ const pagelist = (argument = "") => {
                     let allOpts = [];
                     response.results.forEach(article => {
                         articles += `
-                            <div class="col-4 ${article.name.replace(/\s+/g, "-")} d-none">
+                            <a href = "#pagedetail/${article.id}" class="col-4 ${article.name.replace(/\s+/g, "-")} d-none">
                                 <div class="cardGame card my-4">
-                                    <img src="${article.background_image}" class="card-img-top" alt="">
+                                    <div class="card-img-top">
+                                        <img src="${article.background_image}" class="card-img-single" alt="">
+                                    </div
                                     <div class="card-body">
                                         <h1>${article.name}</h1>
-                                        <h2>${article.released}</h2>
-                                        <a href = "#pagedetail/${article.id}">${article.id}</a>
+                                        <h2 class="d-none">${article.released}</h2>
                                     </div>
                                 </div>
-                            </div>`;
+                            </a>`;
                         let opt = document.createElement('option');
                         opt.id = article.name.replace(/\s+/g, "-");
                         opt.innerHTML = `${article.name}`
