@@ -22,18 +22,18 @@ const pagelist = (argument = "") => {
                     response.results.forEach(article => {
                         let platforms = article.platforms.map(x => `<li>${new Components().svgComponent(x.platform['slug'])}</li>`);
                         articles += `
-                            <a href="#pagedetail/${article.id}" class="col-4 ${article.name.replace(/\s+/g, "-")} d-none">
-                                <div class="cardGame card my-4">
+                            <div class="col-4 ${article.name.replace(/\s+/g, "-")} d-none">
+                                <a href="#pagedetail/${article.id}" class="cardGame card my-4">
                                     <div class="card-img-top">
                                         <img src="${article.background_image}" class="card-img-single" alt="">
                                     </div>
                                     <div class="card-body">
                                         <h1>${article.name}</h1>
                                         <h2 class="d-none">${article.released}</h2>
-                                        <ul class="platform-list">${platforms}</ul>
+                                        <ul class="platform-list">${platforms.join(' ')}</ul>
                                     </div>
-                                </div>
-                            </a>`;
+                                </a>
+                            </div>`;
                         let opt = document.createElement('option');
                         opt.id = article.name.replace(/\s+/g, "-");
                         opt.innerHTML = `${article.name}`

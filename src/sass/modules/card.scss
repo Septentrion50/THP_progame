@@ -21,6 +21,15 @@
             font-size: 1.2rem;
             font-weight: bold;
         }
+        svg {
+            height: 1rem !important;
+            margin-right: .5rem;
+            fill: $light;
+        }
+    }
+    .card-body {
+        padding-left: 0;
+        padding-right: 0;
     }
     .card-img-top {
         width: 100%;
