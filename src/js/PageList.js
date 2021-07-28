@@ -26,7 +26,7 @@ const pagelist = (argument = "") => {
                                 <div class="cardGame card my-4">
                                     <div class="card-img-top">
                                         <img src="${article.background_image}" class="card-img-single" alt="">
-                                    </div
+                                    </div>
                                     <div class="card-body">
                                         <h1>${article.name}</h1>
                                         <h2 class="d-none">${article.released}</h2>

@@ -5,6 +5,7 @@ import search from '../svg/search.svg';
 import nintendo from '../svg/switch.svg';
 import windows from '../svg/windows.svg';
 import xbox from '../svg/xbox.svg';
+import mac from '../svg/mac.svg';
 
 class Components {
 
@@ -12,17 +13,22 @@ class Components {
         this.fileNames = {
             'linux': linux,
             'mobile': mobile,
-            'ps4': ps4,
+            'playstation': ps4,
             'search': search,
-            'switch': nintendo,
-            'windows': windows,
+            'nintendo': nintendo,
+            'pc': windows,
             'xbox': xbox,
+            'mac': mac,
         };
     }
 
     svgComponent(file) {
-        Object.keys(this.fileNames).filter(x => file.includes(x) ? x : false);
-        return this.fileNames[file];
+        let keys = Object.keys(this.fileNames)
+        for (let i = 0; i < keys.length; i++) {
+            if (file.includes(keys[i])){
+                return this.fileNames[keys[i]];
+            }
+        }
     }
 }
 
