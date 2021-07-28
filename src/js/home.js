@@ -1,7 +1,7 @@
 import Components from './components';
 
 
-const pagelist = (argument = "") => {
+const home = (argument = "") => {
 
     const preparePage = () => {
         let cleanedArgument = argument.replace(/\s+/g, "-");
@@ -22,18 +22,18 @@ const pagelist = (argument = "") => {
                     response.results.forEach(article => {
                         let platforms = article.platforms.map(x => `<li>${new Components().svgComponent(x.platform['slug'])}</li>`);
                         articles += `
-                            <div class="col-4 ${article.name.replace(/\s+/g, "-")} d-none">
-                                <a href="#pagedetail/${article.id}" class="cardGame card my-4">
+                            <a href="#pagedetail/${article.id}" class="col-4 ${article.name.replace(/\s+/g, "-")} d-none">
+                                <div class="cardGame card my-4">
                                     <div class="card-img-top">
                                         <img src="${article.background_image}" class="card-img-single" alt="">
                                     </div>
                                     <div class="card-body">
                                         <h1>${article.name}</h1>
                                         <h2 class="d-none">${article.released}</h2>
-                                        <ul class="platform-list">${platforms.join(' ')}</ul>
+                                        <ul class="platform-list">${platforms}</ul>
                                     </div>
-                                </a>
-                            </div>`;
+                                </div>
+                            </a>`;
                         let opt = document.createElement('option');
                         opt.id = article.name.replace(/\s+/g, "-");
                         opt.innerHTML = `${article.name}`
@@ -43,7 +43,7 @@ const pagelist = (argument = "") => {
                     for (let i = 0; i < allOpts.length; i ++) {
                         select.append(allOpts[i]);
                     }
-                    document.querySelector(".page-list .articles").innerHTML = articles;
+                    document.querySelector("#articles").innerHTML = articles;
 
                     let nineFirst = document.querySelectorAll('.col-4');
                     for (let i = 0; i < 9; i++){
@@ -89,13 +89,17 @@ const pagelist = (argument = "") => {
     const render = () => {
         let pageContent = document.querySelector("#pageContent");
         pageContent.innerHTML = `
+            <div class="welcome">
+                <h1 class="h1">Welcome</h1>
+                <p class="welcome-content></p>
+            </div>
             <section class="page-list">
                 <div>
                     <select name="filter" id="gameFilter">
                         <option id="first-opt">Please select something</option>
                     </select>
                 </div>
-                <div class="articles row">...loading</div>
+                <div id="articles" class="articles row">...loading</div>
                 <div class="mt-5">
                     <button id="btn-show-more" class="btn btn-primary">Show more...</button>
                 </div>
@@ -121,4 +125,4 @@ const pagelist = (argument = "") => {
     });
 };
 
-export default pagelist;
+export default home;
