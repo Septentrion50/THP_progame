@@ -39,7 +39,7 @@ const pagelist = (argument = "") => {
                         opt.innerHTML = `${article.name}`
                         allOpts.push(opt);
                     });
-                    select.innerHTML = '';
+                    select.innerHTML = '<option id="first-opt">Platform: any</option>';
                     for (let i = 0; i < allOpts.length; i ++) {
                         select.append(allOpts[i]);
                     }
@@ -62,7 +62,7 @@ const pagelist = (argument = "") => {
             <section class="page-list">
                 <div>
                     <select name="filter" id="gameFilter">
-                        <option id="first-opt">Please select something</option>
+                        <option id="first-opt">Platform: any</option>
                     </select>
                 </div>
                 <div class="articles row">...loading</div>
