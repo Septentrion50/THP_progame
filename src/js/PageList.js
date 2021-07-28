@@ -7,6 +7,7 @@ const pagelist = (argument = "") => {
         let cleanedArgument = argument.replace(/\s+/g, "-");
         let articles = "";
         let select = document.querySelector('#gameFilter');
+        let currentPlatforms = {};
 
         const fetchList = (url, argument) => {
             let finalURL = url;
@@ -20,6 +21,7 @@ const pagelist = (argument = "") => {
                 .then(response => {
                     let allOpts = [];
                     response.results.forEach(article => {
+                        article.platforms.map(x => currentPlatforms[x.platform["id"]] = x.platform["name"]);
                         let platforms = article.platforms.map(x => `<li>${new Components().svgComponent(x.platform['slug'])}</li>`);
                         articles += `
                             <div class="col-4 ${article.name.replace(/\s+/g, "-")} d-none">
@@ -52,6 +54,7 @@ const pagelist = (argument = "") => {
                 });
         };
         fetchList(`https://api.rawg.io/api/games?key=${process.env.API_KEY}`, cleanedArgument);
+        console.log(currentPlatforms);
     };
 
     window.addEventListener('change', showSelected);

@@ -14,11 +14,16 @@ class Components {
             'linux': linux,
             'mobile': mobile,
             'playstation': ps4,
+            'psp': ps4,
             'search': search,
             'nintendo': nintendo,
+            'game-boy': nintendo,
+            'snes': nintendo,
             'pc': windows,
+            'web': windows,
             'xbox': xbox,
             'mac': mac,
+            'ios': mac,
         };
     }
 
