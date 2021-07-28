@@ -1,7 +1,38 @@
 body {
     background-color: $dark;
     color: $light;
+    font-family: $font;
     font-size: 62.5%;
+}
+
+a,a:visited {
+	text-decoration: none;
+	position: relative;
+	color: $light;
+
+	&:after {
+		content: '';
+		height: 3px;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 0%;
+		background-color: $light;
+		transition: .2s;
+	}
+
+	&:hover:after {
+		width: 100%;
+	}
+
+	&.block {
+		display: block;
+		padding: .5em;
+
+		&:hover {
+			background-color: $light;
+		}
+	}
 }
 
 ul,li {
@@ -15,5 +46,5 @@ ul,li {
     font-weight: bold;
 }
 .welcome-content {
-    font-size: 8rem;
+    font-size: .8rem;
 }
