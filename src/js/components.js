@@ -17,11 +17,12 @@ class Components {
             'switch': nintendo,
             'windows': windows,
             'xbox': xbox,
-        }
+        };
     }
 
     svgComponent(file) {
-        return `${this.fileNames[file]}`;
+        Object.keys(this.fileNames).filter(x => file.includes(x) ? x : false);
+        return this.fileNames[file];
     }
 }
 
