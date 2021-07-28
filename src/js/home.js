@@ -30,7 +30,7 @@ const home = (argument = "") => {
                                     <div class="card-body">
                                         <h1>${article.name}</h1>
                                         <h2 class="d-none">${article.released}</h2>
-                                        <ul class="platform-list">${platforms}</ul>
+                                        <ul class="platform-list">${platforms.join(' ')}</ul>
                                     </div>
                                 </div>
                             </a>`;
