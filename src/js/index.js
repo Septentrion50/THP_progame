@@ -16,7 +16,7 @@ let pageArgument;
 const setRoute = () => {
     let path = window.location.hash.substring(1).split("/");
     if (path[0] === ""){
-        path[0] = "pagelist";
+        path[0] = "home";
     }
 
     pageArgument = path[1] || "";
