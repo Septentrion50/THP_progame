@@ -60,7 +60,10 @@ const pagedetail = (argument = "") => {
                         <a href="" class=""></a>
                     </div>
                     <h2 class="h2">Trailer</h2>
-                    <video class="mb-5"></div>
+                    <video class="w-100 mb-5" poster="" controls>
+                        <source src="" type="video/mp4">
+                        <p class="welcome-content">Sorry, your browser doesn't support embedded videos.</p>
+                    </video>
 
                     <h2 class="h2">Screenshots</h2>
                     <div class="row mb-5">
