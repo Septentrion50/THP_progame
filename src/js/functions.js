@@ -52,7 +52,13 @@ const showSelected = () => {
 
     const fetchGameSeries = (id) => {
         const finalURL = `https://api.rawg.io/api/games/${id}/game-series?key=${process.env.API_KEY}`;
-        return fetch(`${finalURL}`).then(res => res.json());
+        let gamesArr = [];
+        fetch(finalURL)
+            .then(res => res.json())
+            .then(res => {
+                res.results.forEach(item => gamesArr.push(item));
+            });
+        return gamesArr;
     };
 
     const fetchVideos = (slug) => {
