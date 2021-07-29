@@ -23,6 +23,11 @@ const pagelist = (argument = "") => {
                 .then(response => {
                     let allOpts = [];
                     response.results.forEach(article => {
+                        // localStorage
+                        let screenshotsArr = [];
+                        article.short_screenshots.map(s => screenshotsArr.push(s.image));
+                        localStorage.setItem(article.id, screenshotsArr);
+
                         article.platforms.map(x => currentPlatforms[x.platform["id"]] = x.platform["name"]);
                         let platforms = article.platforms.map(x => `<li>${new Components().svgComponent(x.platform['slug'])}</li>`);
                         articles += `
@@ -62,7 +67,6 @@ const pagelist = (argument = "") => {
                 });
         };
         fetchList(`https://api.rawg.io/api/games?key=${process.env.API_KEY}`, cleanedArgument);
-        console.log(currentPlatforms);
     };
 
     window.addEventListener('change', showSelected);

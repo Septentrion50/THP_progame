@@ -74,4 +74,8 @@ const showSelected = () => {
         return videoIds;
     }
 
+    const setLocalStorage = (name, obj) => {
+        return 
+    };
+
 export { showSelected, showMore, revealCards, hoverGamePicture, fetchDetails, fetchGameSeries, fetchVideos};
