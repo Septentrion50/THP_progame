@@ -55,4 +55,17 @@ const showSelected = () => {
         return fetch(`${finalURL}`).then(res => res.json());
     };
 
-export { showSelected, showMore, revealCards, hoverGamePicture, fetchDetails, fetchGameSeries};
+    const fetchVideos = (slug) => {
+        let videoIds = [];
+        const url = `https://api.rawg.io/api/games/${slug}/movies?key=${process.env.API_KEY}`
+        fetch(url)
+            .then(res => res.json())
+            .then(res => {
+                res.results.forEach(item => {
+                    videoIds.push(item.data.max);
+                })
+            })
+        return videoIds;
+    }
+
+export { showSelected, showMore, revealCards, hoverGamePicture, fetchDetails, fetchGameSeries, fetchVideos};
