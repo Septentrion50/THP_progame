@@ -6,7 +6,10 @@ const Dotenv = require('dotenv-webpack');
 module.exports = {
 
     // Point d'entrée" de ton app
-    entry: './src/js/index.js',
+    entry: [
+        '@babel/polyfill',
+        './src/js/index.js'
+    ],
     watch: true,
 
     // fichier de sortie
