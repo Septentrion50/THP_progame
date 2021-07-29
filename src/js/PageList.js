@@ -1,7 +1,8 @@
 import Components from './components';
-import { showSelected, showMore, revealCards} from './functions';
+import { showSelected, showMore, revealCards, hoverGamePicture, fetchDetails} from './functions';
 
 const pagelist = (argument = "") => {
+    let isHoverGamePicture = false;
 
     let select = document.querySelector('#gameFilter');
     const preparePage = () => {
@@ -24,16 +25,23 @@ const pagelist = (argument = "") => {
                         let platformsLogo = article.platforms.map(x => `<li>${new Components().svgComponent(x.platform['slug'])}</li>`);
                         articles += `
                             <div class="col-4 ${article.name.replace(/\s+/g, "-")} d-none">
-                                <a href="#pagedetail/${article.id}" class="cardGame card my-4">
+                                <div class="cardGame card my-4">
                                     <div class="card-img-top">
+                                        <div class="card-img-over opacity-0">
+                                            <p class="card-img-over-title">${article.released}</p>
+                                            <p class="card-img-over-title"></p>
+                                            <p class="card-img-over-title"></p>
+                                            <p class="card-img-over-text"></p>
+                                        </div>
                                         <img src="${article.background_image}" class="card-img-single" alt="">
                                     </div>
                                     <div class="card-body">
-                                        <h1>${article.name}</h1>
-                                        <h2 class="d-none">${article.released}</h2>
+                                        <a href="#pagedetail/${article.id}" class="d-block">
+                                            <h1>${article.name}</h1>
+                                        </a>
                                         <ul class="platform-list">${platformsLogo.join(' ')}</ul>
                                     </div>
-                                </a>
+                                </div>
                             </div>`;
                     });
                     console.log(allOpts)
@@ -68,11 +76,13 @@ const pagelist = (argument = "") => {
             </section>
         `;
         preparePage();
+        isHoverGamePicture = true;
     };
 
     select.addEventListener('change', showSelected);
 
     render();
+    hoverGamePicture(isHoverGamePicture);
 
     let pageNumber = 1;
 
