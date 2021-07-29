@@ -1,3 +1,6 @@
+import { fetchGameSeries } from './functions';
+
+
 const pagedetail = (argument = "") => {
 
     const preparePage = () => {
@@ -23,47 +26,57 @@ const pagedetail = (argument = "") => {
                         <div class="article">
                             <div class="title-group">
                                 <h1 class="h1 title">${response.name}</h1>
-                                <div class="title-group-votes">${response.rating}/${response.rating_top} -  ${response.ratings_count} votes</div>
-                        </div>
-
-                        <p class="description">${response.description}</p>
-
-                        <div class="row">
-                            <div class="col-12 col-sm-6 col-md-3 release-date">${response.released}</div>
-                        </div>
-
-                        <h2 class="h2">BUY</h2>
-                        <div id="stores" class="mb-5">
-                        </div>
-                        <h2 class="h2">Trailer</h2>
-                        <video id="trailer" class="w-100 mb-5" poster="" controls>
-                        <source src="" type="video/mp4">
-                        <p class="welcome-content">Sorry, your browser doesn't support embedded videos.</p>
-                        </video>
-
-                        <h2 class="h2">Screenshots</h2>
-                        <div class="row mb-5">
-                            <div class="col-12 col-sm-6">
-                                <a href="" class=""></a>
+                                <div class="title-group-votes">
+                                    ${response.rating}/${response.rating_top} -  ${response.ratings_count} votes
+                                </div>
                             </div>
-                        </div>
 
-                        <h2 class="h2">Youtube</h2>
-                        <div class="row">
-                            <div class="col-12 col-sm-6"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 col-sm-6 col-md-4"></div>
-                        </div>
+                            ${response.description}
 
-                        <h2 class="h2">Similar games</h2>
-                        <div class="row">
-                            <div class="col-12 col-sm-6 col-md-4">
-                                <a href="" class=""></a>
-                                <h3 class="h3"></h3>
-                                <ul class="platform-list">
-                                    <li></li>
-                                </ul>
+                            <div class="row mb-5">
+                                <div class="col-12 col-sm-6 col-md-3 release-date">
+                                    ${response.released ? response.released : ''}
+                                </div>
+                            </div>
+
+                            <h2 class="h2">BUY</h2>
+                            <div id="stores" class="mb-5">
+                            </div>
+
+                            <h2 class="h2">Trailer</h2>
+                            <video id="trailer" class="w-100 mb-5" poster="" controls>
+                                <source src="" type="video/mp4">
+                                <p class="welcome-content">Sorry, your browser doesn't support embedded videos.</p>
+                            </video>
+
+                            <h2 class="h2">Screenshots</h2>
+                            <div class="row mb-5">
+                                <div class="col-12 col-sm-6">
+                                    <a href="" class=""></a>
+                                </div>
+                            </div>
+
+                            <h2 class="h2">Youtube</h2>
+                            <div class="row mb-5">
+                                <div class="col-12 col-sm-6"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-sm-6 col-md-4"></div>
+                            </div>
+
+                            <h2 class="h2">Similar games</h2>
+                            <div class="row">
+                                <div class="col-12 col-sm-6 col-md-4">
+                                <div class="cardGame card my-4">
+                                    <div class="card-img-top">
+                                        <img src="${response.background_image}" class="card-img-single" alt="">
+                                    </div>
+                                    <div class="card-body">
+                                        <h1>${response.name}</h1>
+                                        <h2 class="d-none">${response.released}</h2>
+                                        <ul class="platform-list"></ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>`;

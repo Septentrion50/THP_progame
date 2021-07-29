@@ -50,4 +50,9 @@ const showSelected = () => {
         return fetch(`${finalURL}`).then(res => res.json());
     };
 
-export { showSelected, showMore, revealCards, hoverGamePicture, fetchDetails};
+    const fetchGameSeries = (id) => {
+        const finalURL = `https://api.rawg.io/api/games/${id}/game-series?key=${process.env.API_KEY}`;
+        return fetch(`${finalURL}`).then(res => res.json());
+    };
+
+export { showSelected, showMore, revealCards, hoverGamePicture, fetchDetails, fetchGameSeries};

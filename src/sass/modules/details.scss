@@ -1,5 +1,4 @@
 .img-lg {
-    width: 100%;
     height: 30rem;
     display: flex;
     justify-content: flex-end;
@@ -39,6 +38,13 @@
     .title-group-votes {
         color: $red;
         font-size: 1.2rem;
+        font-weight: bold;
+    }
+}
+
+.article {
+    h3 {
+        font-size: .85rem;
         font-weight: bold;
     }
 }

@@ -31,15 +31,15 @@ const pagelist = (argument = "") => {
                                     <div class="card-img-top">
                                         <div class="card-img-over opacity-0">
                                             <p class="card-img-over-title">${article.released}</p>
-                                            <p class="card-img-over-title"></p>
-                                            <p class="card-img-over-title"></p>
-                                            <p class="card-img-over-text"></p>
+                                            <p class="card-img-over-title">${article.rating}/${article.rating_top} - ${article.ratings_count} votes</p>
+                                            <p class="card-img-over-text">${article.tags.map(x => x.name).join(', ')}</p>
                                         </div>
                                         <img src="${article.background_image}" class="card-img-single" alt="">
                                     </div>
                                     <div class="card-body">
-                                        <h1>${article.name}</h1>
-                                        <h2 class="d-none">${article.released}</h2>
+                                        <a href="#pagedetail/${article.id}" class="d-block">
+                                            <h1>${article.name}</h1>
+                                        </a>
                                         <ul class="platform-list">${platforms.join(' ')}</ul>
                                     </div>
                                 </div>
