@@ -17,6 +17,25 @@ const pagedetail = (argument = "") => {
                 .then((response) => {
 
                     let articleDOM = document.querySelector(".page-detail");
+                    let similarGamesDOM = '';
+
+                    fetchGameSeries(response.id).forEach(game => {
+                        similarGamesDOM += `
+                            <li class="col-12 col-sm-6 col-md-4">
+                                <div class="cardGame card my-4">
+                                    <div class="card-img-top">
+                                        <img src="${game.background_image}" class="card-img-single" alt="">
+                                    </div>
+                                    <div class="card-body">
+                                        <h1>${game.name}</h1>
+                                        <h2 class="d-none">${game.released}</h2>
+                                        <ul class="platform-list"></ul>
+                                    </div>
+                                </div>
+                            </li>
+                        `;
+                        console.log('similarGamesDOM => ',similarGamesDOM);
+                    });
 
                     articleDOM.innerHTML = `
                         <div id="bigImg" class="img-lg mb-5" style="background-image: url('${response.background_image}');">
@@ -65,21 +84,14 @@ const pagedetail = (argument = "") => {
                             </div>
 
                             <h2 class="h2">Similar games</h2>
-                            <div class="row">
-                                <div class="col-12 col-sm-6 col-md-4">
-                                <div class="cardGame card my-4">
-                                    <div class="card-img-top">
-                                        <img src="${response.background_image}" class="card-img-single" alt="">
-                                    </div>
-                                    <div class="card-body">
-                                        <h1>${response.name}</h1>
-                                        <h2 class="d-none">${response.released}</h2>
-                                        <ul class="platform-list"></ul>
-                                    </div>
-                                </div>
-                            </div>
+                            <ul id="similar-games-list" class="row">
+                                
+                            </ul>
                         </div>
-                    </div>`;
+                    `;
+
+                    console.log('similarGamesDOM==',similarGamesDOM);
+                    document.querySelector('#similar-games-list').innerHTML = similarGamesDOM;
             });
         };
 
