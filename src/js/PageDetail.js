@@ -16,15 +16,14 @@ const pagedetail = (argument = "") => {
                     let articleDOM = document.querySelector(".page-detail");
 
                     articleDOM.innerHTML = `
-                        <div id="bigImg" class="img-lg d-flex justify-content-between align-items-center" style="background: transparent url('${response.background_image}') center center no-repeat; background-size: cover;">
-                            <div class="img-lg-btn-group">
-                                <a href="${response.website}" class="img-lg-btn">Check website</a>
-                            </div>
+                        <div id="bigImg" class="img-lg mb-5" style="background-image: url('${response.background_image}');">
+                            <a href="${response.website}" class="btn-default img-lg-btn">Check website<i class="triangle"></i></a>
                         </div>
+
                         <div class="article">
-                            <div class="title-group d-flex justify-content-between">
+                            <div class="title-group">
                                 <h1 class="h1 title">${response.name}</h1>
-                            <div class="title-group-votes">${response.rating}/${response.rating_top} -  ${response.ratings_count} votes</div>
+                                <div class="title-group-votes">${response.rating}/${response.rating_top} -  ${response.ratings_count} votes</div>
                         </div>
 
                         <p class="description">${response.description}</p>
@@ -69,7 +68,6 @@ const pagedetail = (argument = "") => {
                         </div>
                     </div>`;
             });
-                
         };
 
         fetchGame("https://api.rawg.io/api/games/", cleanedArgument);

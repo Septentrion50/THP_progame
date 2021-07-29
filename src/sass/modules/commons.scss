@@ -9,6 +9,7 @@ a,a:visited {
 	text-decoration: none;
 	position: relative;
 	color: $light;
+	@include transition(200ms);
 
 	&:after {
 		content: '';
@@ -18,7 +19,11 @@ a,a:visited {
 		left: 0;
 		width: 0%;
 		background-color: $light;
-		@include transition(200);
+		@include transition(200ms);
+	}
+
+	&:hover {
+		color: $light;
 	}
 
 	&:hover:after {
@@ -42,7 +47,7 @@ ul,li {
 }
 
 .opacity-1,.opacity-0 {
-	@include transition(350);
+	@include transition(350ms);
 }
 .opacity-1 {
 	opacity: 1 !important;
@@ -61,5 +66,5 @@ ul,li {
 	text-transform: uppercase;
 }
 .welcome-content {
-    font-size: .8rem;
+    font-size: .85rem;
 }
