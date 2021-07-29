@@ -27,4 +27,27 @@ const showSelected = () => {
         arr.map(x => x.classList.remove('d-none'));
     };
 
-export { showSelected, showMore, revealCards};
+    const hoverGamePicture = (bool) => {
+        const evtGamePicture = () => {
+            if (bool === true) {
+                const imgElt = document.querySelectorAll('.card .card-img-over');
+                imgElt.forEach(elt => {
+                    elt.addEventListener('mouseover', (e) => {
+                        e.target.classList.remove('opacity-0');
+                    });
+                    elt.addEventListener('mouseleave', (e) => {
+                        e.target.classList.add('opacity-0');
+                    });
+                });
+                clearInterval(evt);
+            }
+        };
+        const evt = setInterval(evtGamePicture, 500);
+    };
+
+    const fetchDetails = (id) => {
+        const finalURL = `https://api.rawg.io/api/games/${id}?key=${process.env.API_KEY}`;
+        return fetch(`${finalURL}`).then(res => res.json());
+    };
+
+export { showSelected, showMore, revealCards, hoverGamePicture, fetchDetails};

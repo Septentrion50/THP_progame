@@ -18,7 +18,7 @@ a,a:visited {
 		left: 0;
 		width: 0%;
 		background-color: $light;
-		transition: .2s;
+		@include transition(200);
 	}
 
 	&:hover:after {
@@ -41,9 +41,24 @@ ul,li {
     list-style: none;
 }
 
+.opacity-1,.opacity-0 {
+	@include transition(350);
+}
+.opacity-1 {
+	opacity: 1 !important;
+}
+.opacity-0 {
+	opacity: 0 !important;
+}
+
 .h1 {
     font-size: 2.4rem;
     font-weight: bold;
+}
+.h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+	text-transform: uppercase;
 }
 .welcome-content {
     font-size: .8rem;

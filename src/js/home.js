@@ -1,7 +1,8 @@
 import Components from './components';
-import { showSelected, showMore, revealCards} from './functions';
+import { showSelected, showMore, revealCards, hoverGamePicture, fetchDetails} from './functions';
 
 const home = (argument = "") => {
+    let isHoverGamePicture = false;
 
     const preparePage = () => {
         let cleanedArgument = argument.replace(/\s+/g, "-");
@@ -23,19 +24,28 @@ const home = (argument = "") => {
                     response.results.forEach(article => {
                         article.platforms.map(x => currentPlatforms[x.platform["id"]] = x.platform["name"]);
                         let platforms = article.platforms.map(x => `<li>${new Components().svgComponent(x.platform['slug'])}</li>`);
+                        //let details = fetchDetails(article.id).then(res => res);
+                        //console.log('details: ',Promise.resolve(details).then(res => res));
                         articles += `
                             <div class="col-4 ${article.name.replace(/\s+/g, "-")} d-none">
-                                <a href="#pagedetail/${article.id}" class="cardGame card my-4">
+                                <div class="cardGame card my-4">
                                     <div class="card-img-top">
+                                        <div class="card-img-over opacity-0">
+                                            <p class="card-img-over-title">${article.released}</p>
+                                            <p class="card-img-over-title">${article.rating}/${article.rating_top} - ${article.ratings_count} votes</p>
+                                            <p class="card-img-over-text">${article.tags.map(x => x.name).join(', ')}</p>
+                                        </div>
                                         <img src="${article.background_image}" class="card-img-single" alt="">
                                     </div>
                                     <div class="card-body">
-                                        <h1>${article.name}</h1>
-                                        <h2 class="d-none">${article.released}</h2>
+                                        <a href="#pagedetail/${article.id}" class="d-block">
+                                            <h1>${article.name}</h1>
+                                        </a>
                                         <ul class="platform-list">${platforms.join(' ')}</ul>
                                     </div>
-                                </a>
+                                </div>
                             </div>`;
+                            /*<p class="card-img-over-title">${details.publishers.map(x => x.name)}</p>*/
                         let opt = document.createElement('option');
                         opt.id = article.name.replace(/\s+/g, "-");
                         opt.innerHTML = `${article.name}`
@@ -79,9 +89,11 @@ const home = (argument = "") => {
             </section>
         `;
         preparePage();
+        isHoverGamePicture = true;
     };
 
     render();
+    hoverGamePicture(isHoverGamePicture);
 
     let pageNumber = 1;
 

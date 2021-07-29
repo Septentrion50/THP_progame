@@ -17,3 +17,11 @@
         border-radius: $brval 0 0 $brval;
     }
 }
+
+@mixin transition($ms) {
+    -webkit-transition: all $ms ease;
+	-moz-transition: all $ms ease;
+	-ms-transition: all $ms ease;
+	-o-transition: all $ms ease;
+	transition: all $ms ease;
+}
