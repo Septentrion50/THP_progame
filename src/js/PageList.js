@@ -2,11 +2,11 @@ import Components from './components';
 import { showSelected, showMore, revealCards} from './functions';
 
 const pagelist = (argument = "") => {
-
-    let select = document.querySelector('#gameFilter');
     const preparePage = () => {
         let cleanedArgument = argument.replace(/\s+/g, "-");
         let articles = "";
+        let select = document.querySelector('#gameFilter');
+        let currentPlatforms = {};
 
         const fetchList = (url, argument) => {
             let finalURL = url;
@@ -20,8 +20,8 @@ const pagelist = (argument = "") => {
                 .then(response => {
                     let allOpts = [];
                     response.results.forEach(article => {
-                        article.platforms.map(x => allOpts.push(`<option value="${x.platform["id"]}">${x.platform["name"]}</option>`));
-                        let platformsLogo = article.platforms.map(x => `<li>${new Components().svgComponent(x.platform['slug'])}</li>`);
+                        article.platforms.map(x => currentPlatforms[x.platform["id"]] = x.platform["name"]);
+                        let platforms = article.platforms.map(x => `<li>${new Components().svgComponent(x.platform['slug'])}</li>`);
                         articles += `
                             <div class="col-4 ${article.name.replace(/\s+/g, "-")} d-none">
                                 <a href="#pagedetail/${article.id}" class="cardGame card my-4">
@@ -31,17 +31,20 @@ const pagelist = (argument = "") => {
                                     <div class="card-body">
                                         <h1>${article.name}</h1>
                                         <h2 class="d-none">${article.released}</h2>
-                                        <ul class="platform-list">${platformsLogo.join(' ')}</ul>
+                                        <ul class="platform-list">${platforms.join(' ')}</ul>
                                     </div>
                                 </a>
                             </div>`;
+                        let opt = document.createElement('option');
+                        opt.id = article.name.replace(/\s+/g, "-");
+                        opt.innerHTML = `${article.name}`
+                        allOpts.push(opt);
                     });
-                    console.log(allOpts)
-                    select.innerHTML = '<option id="first-opt">Platform: any</option>';
+                    select.innerHTML = '';
                     for (let i = 0; i < allOpts.length; i ++) {
                         select.append(allOpts[i]);
                     }
-                    document.querySelector(".page-list .articles").innerHTML = articles;
+                    document.querySelector("#articles").innerHTML = articles;
 
                     let nineFirst = document.querySelectorAll('.col-4');
                     for (let i = 0; i < 9; i++){
@@ -50,18 +53,21 @@ const pagelist = (argument = "") => {
                 });
         };
         fetchList(`https://api.rawg.io/api/games?key=${process.env.API_KEY}`, cleanedArgument);
+        console.log(currentPlatforms);
     };
+
+    window.addEventListener('change', showSelected);
 
     const render = () => {
         let pageContent = document.querySelector("#pageContent");
         pageContent.innerHTML = `
             <section class="page-list">
                 <div>
-                    <select name="filter" id="gameFilter">
+                    <select name="filter" id="gameFilter" multiple="true">
                         <option id="first-opt">Platform: any</option>
                     </select>
                 </div>
-                <div class="articles row">...loading</div>
+                <div id="articles" class="articles row my-2">...loading</div>
                 <div class="d-flex justify-content-center mt-5">
                     <button id="btn-show-more" class="btn-default">Show more...</button>
                 </div>
@@ -69,8 +75,6 @@ const pagelist = (argument = "") => {
         `;
         preparePage();
     };
-
-    select.addEventListener('change', showSelected);
 
     render();
 
