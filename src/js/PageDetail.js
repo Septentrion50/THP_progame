@@ -42,7 +42,7 @@ const pagedetail = (argument = "") => {
                     let buyDOM = ``;
                     const components = new Components;
                     const buy = response.stores.forEach(res => {
-                        buyDOM += `<li class=""><a href="${res.store.domain}" class="pb-2">`;
+                        buyDOM += `<li class=""><a target="_blank" href="https://${res.store.domain}" class="pb-2">`;
                         buyDOM +=   `<span class="welcome-content me-2">${res.store.name}</span>`;
                         buyDOM +=   components.svgComponent(res.store.slug) ? components.svgComponent(res.store.slug) : ''
                         buyDOM += `</a></li>`;
